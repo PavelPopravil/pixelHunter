@@ -79,7 +79,7 @@ gulp.task('js-watch', ['scripts'], function (done) {
   done();
 });
 
-gulp.task('serve', ['assemble'], function () {
+gulp.task('serve', function () {
   server.init({
     server: './build',
     notify: false,
