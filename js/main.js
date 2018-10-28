@@ -1,6 +1,6 @@
-// import util from '/modules/util.js' 
+import mpdule from './modules/util.js' 
 
-// console.log(util);
+console.log(mpdule);
 
 const screens = [...document.querySelectorAll('template')];
 
@@ -21,13 +21,10 @@ const showScreen = ((screen) => {
 document.addEventListener('keydown', (e) => {
 
     if (e.altKey && e.keyCode === 39) {
-        console.log('alt + ]');
         if (initialState.currentScreen < initialState.screenLength - 1) {
             showScreen(screens[++initialState.currentScreen]);
         }
-
     } else if (e.altKey && e.keyCode === 37) {
-        console.log('alt + [');
         if (initialState.currentScreen > 0) {
             showScreen(screens[--initialState.currentScreen]);
         }
