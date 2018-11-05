@@ -1,4 +1,5 @@
 import {createTempate} from '../modules/createTemplate.js'
+import footer from './footer.js'
 
 const moduleHtml = `
     <div class="result">
@@ -100,6 +101,8 @@ const moduleHtml = `
                 <td colspan="5" class="result__total  result__total--final">950</td>
             </tr>
         </table>
-    </div>`;
+    </div>
+    ${footer}
+    `;
     
 export default createTempate(moduleHtml);

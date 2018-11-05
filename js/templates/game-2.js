@@ -1,4 +1,5 @@
 import {createTempate} from '../modules/createTemplate.js'
+import footer from './footer.js'
 
 const moduleHtml = `
     <div class="game">
@@ -30,6 +31,8 @@ const moduleHtml = `
                 <li class="stats__result stats__result--unknown"></li>
             </ul>
         </div>
-    </div>`;
+    </div>
+    ${footer}
+    `;
     
 export default createTempate(moduleHtml);
