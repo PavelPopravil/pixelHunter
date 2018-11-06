@@ -1,7 +1,8 @@
 import {createTempate} from '../modules/createTemplate.js'
-import footer from './footer.js'
+import header from './header.js'
 
 const moduleHtml = `
+    ${header}
     <div class="result">
         <h1>Победа!</h1>
         <table class="result__table">
@@ -102,7 +103,6 @@ const moduleHtml = `
             </tr>
         </table>
     </div>
-    ${footer}
     `;
     
 export default createTempate(moduleHtml);

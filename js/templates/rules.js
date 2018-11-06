@@ -1,9 +1,11 @@
 import {createTempate} from '../modules/createTemplate.js'
 import renderTemplate from '../modules/renderTemplate.js'
 import game_1 from './game-1.js'
-import footer from './footer.js'
+// import greetings from './greeting.js'
+import header from './header.js'
 
 const moduleHtml = createTempate(`
+    ${header}
     <div class="rules">
         <h1 class="rules__title">Правила</h1>
         <p class="rules__description">Угадай 10 раз для каждого изображения фото <img
@@ -20,25 +22,26 @@ const moduleHtml = createTempate(`
             <button class="rules__button  continue" type="submit" disabled>Go!</button>
         </form>
     </div>
-    ${footer}
     `);
-    
+
+// const linkBack = moduleHtml.querySelector('.header__back');
+
+// linkBack.addEventListener('click', () => {
+//     renderTemplate(greetings);
+// });
+
 const form = moduleHtml.querySelector('.rules__form');
 const inpName = form.querySelector('.rules__input');
 const submitBtn = form.querySelector('.rules__button');
 
 inpName.addEventListener('input', function() {
     if (this.value.length > 0) {
-        removeDisabledState();
+        submitBtn.removeAttribute('disabled');
     }
 });
 
 form.addEventListener('submit', function() {
     renderTemplate(game_1);
 });
-
-const removeDisabledState = () => {
-    submitBtn.removeAttribute('disabled');
-}
 
 export default moduleHtml;

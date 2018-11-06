@@ -1,7 +1,11 @@
 import {createTempate} from '../modules/createTemplate.js'
-import footer from './footer.js'
+import renderTemplate from '../modules/renderTemplate.js'
+import delegateElement from '../utils/delegateElement.js'
+import header from './header.js'
+import stats from './stats.js'
 
-const moduleHtml = `
+const moduleHtml = createTempate(`
+    ${header}
     <div class="game">
         <p class="game__task">Найдите рисунок среди изображений</p>
         <form class="game__content  game__content--triple">
@@ -30,7 +34,15 @@ const moduleHtml = `
             </ul>
         </div>
     </div>
-    ${footer}
-    `;
+    `);
+
+const game = moduleHtml.querySelector('.game');
+
+game.addEventListener('click', function(e) {
+
+    if (delegateElement(e.target, this, 'game__option') !== undefined) {
+        renderTemplate(stats);
+    }
+});
     
-export default createTempate(moduleHtml);
+export default moduleHtml;

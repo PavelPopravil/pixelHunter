@@ -8,30 +8,5 @@ import renderTemplate from './modules/renderTemplate.js';
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    renderTemplate(game1Block);
+    renderTemplate(introBlock);
 });
-
-
-// const screens = [...document.querySelectorAll('template')];
-
-// const initialState = {
-//     startScreen: 0,
-//     currentScreen: 0,
-//     screenLength: screens.length
-// };
-
-// document.addEventListener('keydown', (e) => {
-
-//     if (e.altKey && e.keyCode === 39) {
-//         if (initialState.currentScreen < initialState.screenLength - 1) {
-//             showScreen(screens[++initialState.currentScreen]);
-//         }
-//     } else if (e.altKey && e.keyCode === 37) {
-//         if (initialState.currentScreen > 0) {
-//             showScreen(screens[--initialState.currentScreen]);
-//         }
-    
-//     }
-// });
-
-// showScreen(screens[initialState.startScreen]);

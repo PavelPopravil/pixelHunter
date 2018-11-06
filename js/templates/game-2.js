@@ -1,7 +1,10 @@
 import {createTempate} from '../modules/createTemplate.js'
-import footer from './footer.js'
+import renderTemplate from '../modules/renderTemplate.js'
+import game_3 from './game-3.js'
+import header from './header.js'
 
-const moduleHtml = `
+const moduleHtml = createTempate(`
+    ${header}
     <div class="game">
         <p class="game__task">Угадай, фото или рисунок?</p>
         <form class="game__content  game__content--wide">
@@ -32,7 +35,26 @@ const moduleHtml = `
             </ul>
         </div>
     </div>
-    ${footer}
-    `;
+    `);
+
+const game = moduleHtml.querySelector('.game');
+const gameForm = game.querySelector('.game__content');
+
+gameForm.addEventListener('click', function(e) {
+
+    if (e.target.tagName === 'INPUT') {
+        const name = e.target.name;
+        gameData[name] = e.target.value;
+        
+        if (gameData.question1 !== null) {
+            renderTemplate(game_3);
+        }
+    }
     
-export default createTempate(moduleHtml);
+});
+
+const gameData = {
+    question1: null
+};
+
+export default moduleHtml;

@@ -1,7 +1,6 @@
 import {createTempate} from '../modules/createTemplate.js'
 import renderTemplate from '../modules/renderTemplate.js'
 import rules from './rules.js'
-import footer from './footer.js'
 
 const moduleHtml = createTempate(`
     <div class="greeting central--blur">
@@ -17,7 +16,6 @@ const moduleHtml = createTempate(`
         </div>
         <div class="greeting__continue"><span><img src="img/arrow_right.svg" width="64" height="64" alt="Next"></span></div>
     </div>
-    ${footer}
     `);
 
 moduleHtml.querySelector('.greeting__continue').addEventListener('click', function() {
