@@ -1,8 +1,7 @@
-import {createTempate} from '../modules/createTemplate.js'
-import renderTemplate from '../modules/renderTemplate.js'
-import game_1 from './game-1.js'
-// import greetings from './greeting.js'
-import header from './header.js'
+import createTempate from '../modules/createTemplate.js';
+import renderTemplate from '../modules/renderTemplate.js';
+import game1 from './game-1.js';
+import header from './header.js';
 
 const moduleHtml = createTempate(`
     ${header}
@@ -30,18 +29,19 @@ const moduleHtml = createTempate(`
 //     renderTemplate(greetings);
 // });
 
-const form = moduleHtml.querySelector('.rules__form');
-const inpName = form.querySelector('.rules__input');
-const submitBtn = form.querySelector('.rules__button');
+const form = moduleHtml.querySelector(`.rules__form`);
+const inpName = form.querySelector(`.rules__input`);
+const submitBtn = form.querySelector(`.rules__button`);
 
-inpName.addEventListener('input', function() {
-    if (this.value.length > 0) {
-        submitBtn.removeAttribute('disabled');
-    }
+inpName.addEventListener(`input`, (e) => {
+  if (e.target.value.length > 0) {
+    submitBtn.removeAttribute(`disabled`);
+  }
 });
 
-form.addEventListener('submit', function() {
-    renderTemplate(game_1);
+form.addEventListener(`submit`, () => {
+  renderTemplate(game1);
 });
 
 export default moduleHtml;
+

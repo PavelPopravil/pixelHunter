@@ -1,7 +1,7 @@
-import {createTempate} from '../modules/createTemplate.js'
-import renderTemplate from '../modules/renderTemplate.js'
-import game_3 from './game-3.js'
-import header from './header.js'
+import createTempate from '../modules/createTemplate.js';
+import renderTemplate from '../modules/renderTemplate.js';
+import game3 from './game-3.js';
+import header from './header.js';
 
 const moduleHtml = createTempate(`
     ${header}
@@ -37,24 +37,22 @@ const moduleHtml = createTempate(`
     </div>
     `);
 
-const game = moduleHtml.querySelector('.game');
-const gameForm = game.querySelector('.game__content');
+const game = moduleHtml.querySelector(`.game`);
+const gameForm = game.querySelector(`.game__content`);
 
-gameForm.addEventListener('click', function(e) {
+gameForm.addEventListener(`click`, (e) => {
 
-    if (e.target.tagName === 'INPUT') {
-        const name = e.target.name;
-        gameData[name] = e.target.value;
-        
-        if (gameData.question1 !== null) {
-            renderTemplate(game_3);
-        }
+  if (e.target.tagName === `INPUT`) {
+    const name = e.target.name;
+    gameData[name] = e.target.value;
+    if (gameData.question1 !== null) {
+      renderTemplate(game3);
     }
-    
+  }
 });
 
 const gameData = {
-    question1: null
+  question1: null
 };
 
 export default moduleHtml;

@@ -1,5 +1,5 @@
-import {createTempate} from '../modules/createTemplate.js'
-import renderTemplate from '../modules/renderTemplate.js'
+import createTempate from '../modules/createTemplate.js';
+import renderTemplate from '../modules/renderTemplate.js';
 import greetings from './greeting.js';
 
 const moduleHtml = createTempate(`
@@ -9,10 +9,10 @@ const moduleHtml = createTempate(`
     </div>
 `);
 
-const btn = moduleHtml.querySelector('.intro__asterisk');
+const btn = moduleHtml.querySelector(`.intro__asterisk`);
 
-btn.addEventListener('click', function() {
-    renderTemplate(greetings);
+btn.addEventListener(`click`, () => {
+  renderTemplate(greetings);
 });
 
 export default moduleHtml;

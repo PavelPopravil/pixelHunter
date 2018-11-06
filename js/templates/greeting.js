@@ -1,6 +1,6 @@
-import {createTempate} from '../modules/createTemplate.js'
-import renderTemplate from '../modules/renderTemplate.js'
-import rules from './rules.js'
+import createTempate from '../modules/createTemplate.js';
+import renderTemplate from '../modules/renderTemplate.js';
+import rules from './rules.js';
 
 const moduleHtml = createTempate(`
     <div class="greeting central--blur">
@@ -18,8 +18,9 @@ const moduleHtml = createTempate(`
     </div>
     `);
 
-moduleHtml.querySelector('.greeting__continue').addEventListener('click', function() {
-    renderTemplate(rules);
+moduleHtml.querySelector(`.greeting__continue`).addEventListener(`click`, () => {
+  renderTemplate(rules);
 });
 
 export default moduleHtml;
+

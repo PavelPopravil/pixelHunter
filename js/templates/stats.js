@@ -1,5 +1,5 @@
-import {createTempate} from '../modules/createTemplate.js'
-import header from './header.js'
+import createTempate from '../modules/createTemplate.js';
+import header from './header.js';
 
 const moduleHtml = `
     ${header}
@@ -104,5 +104,6 @@ const moduleHtml = `
         </table>
     </div>
     `;
-    
+
 export default createTempate(moduleHtml);
+

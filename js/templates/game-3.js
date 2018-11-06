@@ -1,8 +1,8 @@
-import {createTempate} from '../modules/createTemplate.js'
-import renderTemplate from '../modules/renderTemplate.js'
-import delegateElement from '../utils/delegateElement.js'
-import header from './header.js'
-import stats from './stats.js'
+import createTempate from '../modules/createTemplate.js';
+import renderTemplate from '../modules/renderTemplate.js';
+import delegateElement from '../utils/delegateElement.js';
+import header from './header.js';
+import stats from './stats.js';
 
 const moduleHtml = createTempate(`
     ${header}
@@ -36,13 +36,13 @@ const moduleHtml = createTempate(`
     </div>
     `);
 
-const game = moduleHtml.querySelector('.game');
+const game = moduleHtml.querySelector(`.game`);
 
-game.addEventListener('click', function(e) {
+game.addEventListener(`click`, (e) => {
 
-    if (delegateElement(e.target, this, 'game__option') !== undefined) {
-        renderTemplate(stats);
-    }
+  if (delegateElement(e.target, e.currentTarget, `game__option`)) {
+    renderTemplate(stats);
+  }
 });
-    
+
 export default moduleHtml;

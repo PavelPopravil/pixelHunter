@@ -1,7 +1,6 @@
-import {createTempate} from '../modules/createTemplate.js';
+import createTempate from '../modules/createTemplate.js';
 import renderTemplate from '../modules/renderTemplate.js';
-import game_2 from './game-2.js';
-// import greetings from './greeting.js';
+import game2 from './game-2.js';
 import header from './header.js';
 
 const moduleHtml = createTempate(`
@@ -49,31 +48,23 @@ const moduleHtml = createTempate(`
     </div>
     `);
 
-// const linkBack = moduleHtml.querySelector('.header__back');
+const game = moduleHtml.querySelector(`.game`);
+const gameForm = game.querySelector(`.game__content`);
 
-// linkBack.addEventListener('click', () => {
-//     renderTemplate(greetings);
-// });
+gameForm.addEventListener(`click`, (e) => {
 
-const game = moduleHtml.querySelector('.game');
-const gameForm = game.querySelector('.game__content');
-
-gameForm.addEventListener('click', function(e) {
-
-    if (e.target.tagName === 'INPUT') {
-        const name = e.target.name;
-        gameData[name] = e.target.value;
-        
-        if (gameData.question1 !== null && gameData.question2 !== null) {
-            renderTemplate(game_2);
-        }
+  if (e.target.tagName === `INPUT`) {
+    const name = e.target.name;
+    gameData[name] = e.target.value;
+    if (gameData.question1 !== null && gameData.question2 !== null) {
+      renderTemplate(game2);
     }
-    
+  }
 });
 
 const gameData = {
-    question1: null,
-    question2: null
+  question1: null,
+  question2: null
 };
-    
+
 export default moduleHtml;

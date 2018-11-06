@@ -1,6 +1,3 @@
-import {createTempate} from '../modules/createTemplate.js'
-// import greetings from './greeting.js'
-
 const moduleHtml = `
     <header class="header">
         <div class="header__back">
@@ -16,6 +13,6 @@ const moduleHtml = `
         <img src="img/heart__full.svg" class="game__heart" alt="Life" width="32" height="32">
         </div>
     </header>
-  `
+  `;
 
 export default moduleHtml;
