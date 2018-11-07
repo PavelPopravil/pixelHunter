@@ -2,9 +2,10 @@ import createTempate from '../modules/createTemplate.js';
 import renderTemplate from '../modules/renderTemplate.js';
 import game3 from './game-3.js';
 import header from './header.js';
+import state from '../game/gameState.js';
 
 const moduleHtml = createTempate(`
-    ${header}
+    ${header(state)}
     <div class="game">
         <p class="game__task">Угадай, фото или рисунок?</p>
         <form class="game__content  game__content--wide">

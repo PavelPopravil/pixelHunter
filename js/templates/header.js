@@ -1,18 +1,18 @@
-const moduleHtml = `
-    <header class="header">
+const headerTemplate = (state) => {
+  const html = `<header class="header">
         <div class="header__back">
-        <span class="back">
+          <span class="back">
             <img src="img/arrow_left.svg" width="45" height="45" alt="Back">
             <img src="img/logo_small.png" width="101" height="44">
-        </span>
+          </span>
         </div>
-        <h1 class="game__timer">NN</h1>
+        <h1 class="game__timer">${state.timeOut}</h1>
         <div class="game__lives">
-        <img src="img/heart__empty.svg" class="game__heart" alt="Life" width="32" height="32">
-        <img src="img/heart__full.svg" class="game__heart" alt="Life" width="32" height="32">
-        <img src="img/heart__full.svg" class="game__heart" alt="Life" width="32" height="32">
+            ${new Array(state.maxLifes - state.lifes).fill(`<img src="img/heart__empty.svg" class="game__heart" alt="Life" width="32" height="32">`).join(``)}
+            ${new Array(state.lifes).fill(`<img src="img/heart__full.svg" class="game__heart" alt="Life" width="32" height="32">`).join(``)}
         </div>
-    </header>
-  `;
+    </header>`;
+  return html;
+};
 
-export default moduleHtml;
+export default headerTemplate;

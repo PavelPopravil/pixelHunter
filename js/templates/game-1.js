@@ -2,9 +2,11 @@ import createTempate from '../modules/createTemplate.js';
 import renderTemplate from '../modules/renderTemplate.js';
 import game2 from './game-2.js';
 import header from './header.js';
+import state from '../game/gameState.js';
 
-const moduleHtml = createTempate(`
-    ${header}
+const moduleHtml =
+
+  createTempate(`
     <div class="game">
         <p class="game__task">Угадайте для каждого изображения фото или рисунок?</p>
         <form class="game__content">

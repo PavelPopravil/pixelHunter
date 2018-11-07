@@ -3,9 +3,10 @@ import renderTemplate from '../modules/renderTemplate.js';
 import delegateElement from '../utils/delegateElement.js';
 import header from './header.js';
 import stats from './stats.js';
+import state from '../game/gameState.js';
 
 const moduleHtml = createTempate(`
-    ${header}
+    ${header(state)}
     <div class="game">
         <p class="game__task">Найдите рисунок среди изображений</p>
         <form class="game__content  game__content--triple">
