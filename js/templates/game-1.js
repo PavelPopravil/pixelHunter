@@ -1,14 +1,13 @@
 import createTempate from '../utils/createTemplate.js';
-import renderTemplate from '../utils/renderTemplate.js';
+import renderGameTemplate from '../utils/renderGameTemplate.js';
 import game2 from './game-2.js';
-// import header from './header.js';
-// import state from '../game/gameState.js';
+import {games} from '../game/data.js';
 
-const moduleHtml = () => {
+const moduleHtml = (state) => {
 
   const html = createTempate(`
     <div class="game">
-        <p class="game__task">Угадайте для каждого изображения фото или рисунок?</p>
+        <p class="game__task">${games[state.screen].description}</p>
         <form class="game__content">
             <div class="game__option">
                 <img src="http://placehold.it/468x458" alt="Option 1" width="468" height="458">
@@ -59,7 +58,7 @@ const moduleHtml = () => {
       const name = e.target.name;
       gameData[name] = e.target.value;
       if (gameData.question1 !== null && gameData.question2 !== null) {
-        renderTemplate(game2);
+        renderGameTemplate(state, game2);
       }
     }
   });

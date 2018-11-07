@@ -1,10 +1,12 @@
 import createTempate from '../utils/createTemplate.js';
-import renderTemplate from '../utils/renderTemplate.js';
+import renderGameTemplate from '../utils/renderGameTemplate.js';
 import game3 from './game-3.js';
+import {games} from '../game/data.js';
 
-const moduleHtml = createTempate(`
+const moduleHtml = (state) => {
+  const html = createTempate(`
     <div class="game">
-        <p class="game__task">Угадай, фото или рисунок?</p>
+        <p class="game__task">${games[state.screen].description}</p>
         <form class="game__content  game__content--wide">
             <div class="game__option">
                 <img src="http://placehold.it/705x455" alt="Option 1" width="705" height="455">
@@ -35,22 +37,25 @@ const moduleHtml = createTempate(`
     </div>
     `);
 
-const game = moduleHtml.querySelector(`.game`);
-const gameForm = game.querySelector(`.game__content`);
+  const game = html.querySelector(`.game`);
+  const gameForm = game.querySelector(`.game__content`);
 
-gameForm.addEventListener(`click`, (e) => {
+  gameForm.addEventListener(`click`, (e) => {
 
-  if (e.target.tagName === `INPUT`) {
-    const name = e.target.name;
-    gameData[name] = e.target.value;
-    if (gameData.question1 !== null) {
-      renderTemplate(game3);
+    if (e.target.tagName === `INPUT`) {
+      const name = e.target.name;
+      gameData[name] = e.target.value;
+      if (gameData.question1 !== null) {
+        renderGameTemplate(state, game3);
+      }
     }
-  }
-});
+  });
 
-const gameData = {
-  question1: null
+  const gameData = {
+    question1: null
+  };
+
+  return html;
 };
 
 export default moduleHtml;

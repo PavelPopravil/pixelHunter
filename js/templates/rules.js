@@ -1,7 +1,7 @@
 import createTempate from '../utils/createTemplate.js';
-import renderScreenTemplate from '../utils/renderTemplate.js';
-import game1 from './game-1.js';
+import renderTemplate from '../utils/renderTemplate.js';
 import {initialState} from '../game/data.js';
+import game1 from './game-1.js';
 
 const moduleHtml = createTempate(`
     <header class="header">
@@ -40,8 +40,9 @@ inpName.addEventListener(`input`, (e) => {
   }
 });
 
-form.addEventListener(`submit`, () => {
-  renderScreenTemplate(game1());
+form.addEventListener(`submit`, (e) => {
+  e.preventDefault();
+  renderTemplate(game1(initialState));
 });
 
 export default moduleHtml;

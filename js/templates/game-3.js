@@ -1,11 +1,13 @@
 import createTempate from '../utils/createTemplate.js';
-import renderTemplate from '../utils/renderTemplate.js';
+import renderGameTemplate from '../utils/renderGameTemplate.js';
 import delegateElement from '../utils/delegateElement.js';
-import stats from './stats.js';
+import game1 from './game-1.js';
+import {games} from '../game/data.js';
 
-const moduleHtml = createTempate(`
+const moduleHtml = (state) => {
+  const html = createTempate(`
     <div class="game">
-        <p class="game__task">Найдите рисунок среди изображений</p>
+        <p class="game__task">${games[state.screen].description}</p>
         <form class="game__content  game__content--triple">
             <div class="game__option">
                 <img src="http://placehold.it/304x455" alt="Option 1" width="304" height="455">
@@ -34,13 +36,16 @@ const moduleHtml = createTempate(`
     </div>
     `);
 
-const game = moduleHtml.querySelector(`.game`);
+  const game = html.querySelector(`.game`);
 
-game.addEventListener(`click`, (e) => {
+  game.addEventListener(`click`, (e) => {
 
-  if (delegateElement(e.target, e.currentTarget, `game__option`)) {
-    renderTemplate(stats);
-  }
-});
+    if (delegateElement(e.target, e.currentTarget, `game__option`)) {
+      renderGameTemplate(state, game1);
+    }
+  });
+
+  return html;
+};
 
 export default moduleHtml;
