@@ -12,3 +12,10 @@ export const games = Object.freeze({
     nextScreen: `game-1`
   }
 });
+
+export const initialState = Object.freeze({
+  timeOut: 30,
+  lifes: 3,
+  maxLifes: 3,
+  screen: `game-1`
+});

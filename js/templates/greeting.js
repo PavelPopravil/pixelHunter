@@ -1,5 +1,5 @@
-import createTempate from '../modules/createTemplate.js';
-import renderTemplate from '../modules/renderTemplate.js';
+import createTempate from '../utils/createTemplate.js';
+import renderTemplate from '../utils/renderTemplate.js';
 import rules from './rules.js';
 
 const moduleHtml = createTempate(`

@@ -1,12 +1,12 @@
-import createTempate from '../modules/createTemplate.js';
-import renderTemplate from '../modules/renderTemplate.js';
+import createTempate from '../utils/createTemplate.js';
+import renderTemplate from '../utils/renderTemplate.js';
 import game2 from './game-2.js';
-import header from './header.js';
-import state from '../game/gameState.js';
+// import header from './header.js';
+// import state from '../game/gameState.js';
 
-const moduleHtml =
+const moduleHtml = () => {
 
-  createTempate(`
+  const html = createTempate(`
     <div class="game">
         <p class="game__task">Угадайте для каждого изображения фото или рисунок?</p>
         <form class="game__content">
@@ -50,23 +50,26 @@ const moduleHtml =
     </div>
     `);
 
-const game = moduleHtml.querySelector(`.game`);
-const gameForm = game.querySelector(`.game__content`);
+  const game = html.querySelector(`.game`);
+  const gameForm = game.querySelector(`.game__content`);
 
-gameForm.addEventListener(`click`, (e) => {
+  gameForm.addEventListener(`click`, (e) => {
 
-  if (e.target.tagName === `INPUT`) {
-    const name = e.target.name;
-    gameData[name] = e.target.value;
-    if (gameData.question1 !== null && gameData.question2 !== null) {
-      renderTemplate(game2);
+    if (e.target.tagName === `INPUT`) {
+      const name = e.target.name;
+      gameData[name] = e.target.value;
+      if (gameData.question1 !== null && gameData.question2 !== null) {
+        renderTemplate(game2);
+      }
     }
-  }
-});
+  });
 
-const gameData = {
-  question1: null,
-  question2: null
+  const gameData = {
+    question1: null,
+    question2: null
+  };
+
+  return html;
 };
 
 export default moduleHtml;

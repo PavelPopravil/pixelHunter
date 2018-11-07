@@ -1,6 +1,7 @@
-import createTempate from '../modules/createTemplate.js';
-import renderTemplate from '../modules/renderTemplate.js';
+import createTempate from '../utils/createTemplate.js';
+import renderScreenTemplate from '../utils/renderTemplate.js';
 import game1 from './game-1.js';
+import {initialState} from '../game/data.js';
 
 const moduleHtml = createTempate(`
     <header class="header">
@@ -29,12 +30,6 @@ const moduleHtml = createTempate(`
     </div>
     `);
 
-// const linkBack = moduleHtml.querySelector('.header__back');
-
-// linkBack.addEventListener('click', () => {
-//     renderTemplate(greetings);
-// });
-
 const form = moduleHtml.querySelector(`.rules__form`);
 const inpName = form.querySelector(`.rules__input`);
 const submitBtn = form.querySelector(`.rules__button`);
@@ -46,7 +41,7 @@ inpName.addEventListener(`input`, (e) => {
 });
 
 form.addEventListener(`submit`, () => {
-  renderTemplate(game1);
+  renderScreenTemplate(game1());
 });
 
 export default moduleHtml;

@@ -1,4 +1,4 @@
-import createTempate from '../modules/createTemplate.js';
+import createTempate from '../utils/createTemplate.js';
 
 const moduleHtml = createTempate(`
     <header class="header">

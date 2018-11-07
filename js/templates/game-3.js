@@ -1,12 +1,9 @@
-import createTempate from '../modules/createTemplate.js';
-import renderTemplate from '../modules/renderTemplate.js';
+import createTempate from '../utils/createTemplate.js';
+import renderTemplate from '../utils/renderTemplate.js';
 import delegateElement from '../utils/delegateElement.js';
-import header from './header.js';
 import stats from './stats.js';
-import state from '../game/gameState.js';
 
 const moduleHtml = createTempate(`
-    ${header(state)}
     <div class="game">
         <p class="game__task">Найдите рисунок среди изображений</p>
         <form class="game__content  game__content--triple">
