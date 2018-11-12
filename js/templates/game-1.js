@@ -1,7 +1,10 @@
 import createTempate from '../utils/createTemplate.js';
 import renderGameTemplate from '../utils/renderGameTemplate.js';
 import game2 from './game-2.js';
-import {games} from '../game/data.js';
+import {games, question} from '../game/data.js';
+import gameOption from '../game/gameOption.js';
+
+// console.log(question[`option-1`]);
 
 const moduleHtml = (state) => {
 
@@ -9,28 +12,8 @@ const moduleHtml = (state) => {
     <div class="game">
         <p class="game__task">${games[state.screen].description}</p>
         <form class="game__content">
-            <div class="game__option">
-                <img src="http://placehold.it/468x458" alt="Option 1" width="468" height="458">
-                <label class="game__answer game__answer--photo">
-                <input name="question1" type="radio" value="photo">
-                <span>Фото</span>
-                </label>
-                <label class="game__answer game__answer--paint">
-                <input name="question1" type="radio" value="paint">
-                <span>Рисунок</span>
-                </label>
-            </div>
-            <div class="game__option">
-                <img src="http://placehold.it/468x458" alt="Option 2" width="468" height="458">
-                <label class="game__answer  game__answer--photo">
-                <input name="question2" type="radio" value="photo">
-                <span>Фото</span>
-                </label>
-                <label class="game__answer  game__answer--paint">
-                <input name="question2" type="radio" value="paint">
-                <span>Рисунок</span>
-                </label>
-            </div>
+           ${gameOption(question.optionList[`option-1`], `option-1`)}
+           ${gameOption(question.optionList[`option-2`], `option-2`)}
         </form>
         <div class="stats">
             <ul class="stats">
@@ -57,15 +40,15 @@ const moduleHtml = (state) => {
     if (e.target.tagName === `INPUT`) {
       const name = e.target.name;
       gameData[name] = e.target.value;
-      if (gameData.question1 !== null && gameData.question2 !== null) {
+      if (gameData[`option-1`] !== null && gameData[`option-2`] !== null) {
         renderGameTemplate(state, game2);
       }
     }
   });
 
   const gameData = {
-    question1: null,
-    question2: null
+    'option-1': null,
+    'option-2': null
   };
 
   return html;
