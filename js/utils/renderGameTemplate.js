@@ -2,6 +2,7 @@ import {games} from '../game/data.js';
 import renderTemplate from './renderTemplate.js';
 import stats from '../templates/stats.js';
 
+// toDo Выводить статус пройдуенных вопросов
 export default (state, screenTemplate) => {
   let questCount = state.questionsLength - 1;
   let currentQuest = state.currentQuestion + 1;

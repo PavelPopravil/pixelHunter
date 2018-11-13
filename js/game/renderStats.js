@@ -1,5 +1,10 @@
 import {questStatusMap} from './data.js';
 
+/**
+ * @type {function}
+ * @param {object} questions - объект с вопросами игр
+ * @return {string} string of html
+ */
 export default (questions) => {
   return `
     <div class="stats">

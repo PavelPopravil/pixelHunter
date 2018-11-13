@@ -5,6 +5,7 @@ import {games, questions} from '../game/data.js';
 import renderOption from '../game/renderOption.js';
 import renderStats from '../game/renderStats.js';
 
+// toDo Отрендерить header
 const moduleHtml = (state) => {
   const html = createTempate(`
     <div class="game">
