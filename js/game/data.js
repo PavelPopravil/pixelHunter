@@ -13,15 +13,6 @@ export const games = Object.freeze({
   }
 });
 
-export const initialState = Object.freeze({
-  timeOut: 30,
-  lifes: 3,
-  maxLifes: 3,
-  screen: `game-1`,
-  questions: 10
-});
-
-
 export const pictures = {
   paintings: [
     `https://k42.kn3.net/CF42609C8.jpg`,
@@ -35,26 +26,127 @@ export const pictures = {
   ]
 };
 
-export const questionList = {
-  // 'question-1': {
-  //   ,
-  // }
-};
-
-export const question = {
-  type: `type-1`,
-  optionList: {
-    'option-1': {
-      isPhoto: true,
-      url: pictures.photos[0],
-      width: 468,
-      height: 458
-    },
-    'option-2': {
-      isPic: false,
-      url: pictures.paintings[0],
-      width: 468,
-      height: 458
+export const questions = Object.freeze({
+  'question-1': {
+    status: `unknown`,
+    optionList: {
+      'option-1': {
+        isPhoto: true,
+        url: pictures.photos[0],
+        width: 468,
+        height: 458
+      },
+      'option-2': {
+        isPic: false,
+        url: pictures.paintings[0],
+        width: 468,
+        height: 458
+      }
+    }
+  },
+  'question-2': {
+    status: `unknown`,
+    optionList: {
+      'option-1': {
+        isPhoto: true,
+        url: pictures.photos[0],
+        width: 705,
+        height: 455
+      }
+    }
+  },
+  'question-3': {
+    status: `unknown`,
+    optionList: {
+      'option-1': {
+        isPhoto: true,
+        url: pictures.photos[1],
+        width: 304,
+        height: 455
+      },
+      'option-2': {
+        isPhoto: false,
+        url: pictures.paintings[1],
+        width: 304,
+        height: 455
+      },
+      'option-3': {
+        isPhoto: true,
+        url: pictures.photos[2],
+        width: 304,
+        height: 455
+      }
     }
   }
+});
+
+export const initialState = Object.freeze({
+  timeOut: 30,
+  lifes: 3,
+  maxLifes: 3,
+  screen: `game-1`,
+  questionsLength: Object.keys(questions).length,
+  currentQuestion: 1
+});
+
+export const questStatusMap = {
+  wrong: `stats__result--wrong`,
+  slow: `stats__result--slow`,
+  fast: `stats__result--fast`,
+  correct: `stats__result--correct`,
+  unknown: `stats__result--unknown`,
 };
+
+// export const questions = [
+//   {
+//     status: `unknown`,
+//     optionList: {
+//       'option-1': {
+//         isPhoto: true,
+//         url: pictures.photos[0],
+//         width: 468,
+//         height: 458
+//       },
+//       'option-2': {
+//         isPic: false,
+//         url: pictures.paintings[0],
+//         width: 468,
+//         height: 458
+//       }
+//     }
+//   },
+//   {
+//     status: `unknown`,
+//     optionList: {
+//       'option-1': {
+//         isPhoto: true,
+//         url: pictures.photos[0],
+//         width: 705,
+//         height: 455
+//       }
+//     }
+//   },
+//   {
+//     status: `unknown`,
+//     optionList: {
+//       'option-1': {
+//         isPhoto: true,
+//         url: pictures.photos[1],
+//         width: 304,
+//         height: 455
+//       },
+//       'option-2': {
+//         isPhoto: false,
+//         url: pictures.paintings[1],
+//         width: 304,
+//         height: 455
+//       },
+//       'option-3': {
+//         isPhoto: true,
+//         url: pictures.photos[2],
+//         width: 304,
+//         height: 455
+//       }
+//     }
+//   }
+// ];

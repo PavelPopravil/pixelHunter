@@ -1,34 +1,19 @@
 import createTempate from '../utils/createTemplate.js';
 import renderGameTemplate from '../utils/renderGameTemplate.js';
 import game2 from './game-2.js';
-import {games, question} from '../game/data.js';
-import gameOption from '../game/gameOption.js';
-
-// console.log(question[`option-1`]);
+import {games, questions} from '../game/data.js';
+import renderOption from '../game/renderOption.js';
+import renderStats from '../game/renderStats.js';
 
 const moduleHtml = (state) => {
-
   const html = createTempate(`
     <div class="game">
         <p class="game__task">${games[state.screen].description}</p>
         <form class="game__content">
-           ${gameOption(question.optionList[`option-1`], `option-1`)}
-           ${gameOption(question.optionList[`option-2`], `option-2`)}
+          ${renderOption(questions[`question-${state.currentQuestion}`].optionList[`option-1`], `option-1`)}
+          ${renderOption(questions[`question-${state.currentQuestion}`].optionList[`option-2`], `option-2`)}
         </form>
-        <div class="stats">
-            <ul class="stats">
-                <li class="stats__result stats__result--wrong"></li>
-                <li class="stats__result stats__result--slow"></li>
-                <li class="stats__result stats__result--fast"></li>
-                <li class="stats__result stats__result--correct"></li>
-                <li class="stats__result stats__result--unknown"></li>
-                <li class="stats__result stats__result--unknown"></li>
-                <li class="stats__result stats__result--unknown"></li>
-                <li class="stats__result stats__result--unknown"></li>
-                <li class="stats__result stats__result--unknown"></li>
-                <li class="stats__result stats__result--unknown"></li>
-            </ul>
-        </div>
+        ${renderStats(questions)}
     </div>
     `);
 

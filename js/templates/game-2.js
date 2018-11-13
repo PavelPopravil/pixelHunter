@@ -1,39 +1,18 @@
 import createTempate from '../utils/createTemplate.js';
 import renderGameTemplate from '../utils/renderGameTemplate.js';
 import game3 from './game-3.js';
-import {games} from '../game/data.js';
+import {games, questions} from '../game/data.js';
+import renderOption from '../game/renderOption.js';
+import renderStats from '../game/renderStats.js';
 
 const moduleHtml = (state) => {
   const html = createTempate(`
     <div class="game">
         <p class="game__task">${games[state.screen].description}</p>
         <form class="game__content  game__content--wide">
-            <div class="game__option">
-                <img src="http://placehold.it/705x455" alt="Option 1" width="705" height="455">
-                <label class="game__answer  game__answer--photo">
-                <input name="question1" type="radio" value="photo">
-                <span>Фото</span>
-                </label>
-                <label class="game__answer  game__answer--wide  game__answer--paint">
-                <input name="question1" type="radio" value="paint">
-                <span>Рисунок</span>
-                </label>
-            </div>
+           ${renderOption(questions[`question-${state.currentQuestion}`].optionList[`option-1`], `option-1`)}
         </form>
-        <div class="stats">
-            <ul class="stats">
-                <li class="stats__result stats__result--wrong"></li>
-                <li class="stats__result stats__result--slow"></li>
-                <li class="stats__result stats__result--fast"></li>
-                <li class="stats__result stats__result--correct"></li>
-                <li class="stats__result stats__result--wrong"></li>
-                <li class="stats__result stats__result--unknown"></li>
-                <li class="stats__result stats__result--slow"></li>
-                <li class="stats__result stats__result--unknown"></li>
-                <li class="stats__result stats__result--fast"></li>
-                <li class="stats__result stats__result--unknown"></li>
-            </ul>
-        </div>
+        ${renderStats(questions)}
     </div>
     `);
 
@@ -45,14 +24,14 @@ const moduleHtml = (state) => {
     if (e.target.tagName === `INPUT`) {
       const name = e.target.name;
       gameData[name] = e.target.value;
-      if (gameData.question1 !== null) {
+      if (gameData[`option-1`] !== null) {
         renderGameTemplate(state, game3);
       }
     }
   });
 
   const gameData = {
-    question1: null
+    'option-1': null
   };
 
   return html;
