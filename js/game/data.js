@@ -86,8 +86,13 @@ export const initialState = Object.freeze({
   maxLifes: 3,
   screen: `game-1`,
   questionsLength: Object.keys(questions).length,
-  currentQuestion: 1
+  currentQuestion: 1,
+  questionStats: {}
 });
+
+for (let question in questions) {
+  initialState.questionStats[question] = questions[question].status;
+}
 
 export const questStatusMap = {
   wrong: `stats__result--wrong`,
@@ -96,57 +101,3 @@ export const questStatusMap = {
   correct: `stats__result--correct`,
   unknown: `stats__result--unknown`,
 };
-
-// export const questions = [
-//   {
-//     status: `unknown`,
-//     optionList: {
-//       'option-1': {
-//         isPhoto: true,
-//         url: pictures.photos[0],
-//         width: 468,
-//         height: 458
-//       },
-//       'option-2': {
-//         isPic: false,
-//         url: pictures.paintings[0],
-//         width: 468,
-//         height: 458
-//       }
-//     }
-//   },
-//   {
-//     status: `unknown`,
-//     optionList: {
-//       'option-1': {
-//         isPhoto: true,
-//         url: pictures.photos[0],
-//         width: 705,
-//         height: 455
-//       }
-//     }
-//   },
-//   {
-//     status: `unknown`,
-//     optionList: {
-//       'option-1': {
-//         isPhoto: true,
-//         url: pictures.photos[1],
-//         width: 304,
-//         height: 455
-//       },
-//       'option-2': {
-//         isPhoto: false,
-//         url: pictures.paintings[1],
-//         width: 304,
-//         height: 455
-//       },
-//       'option-3': {
-//         isPhoto: true,
-//         url: pictures.photos[2],
-//         width: 304,
-//         height: 455
-//       }
-//     }
-//   }
-// ];

@@ -5,9 +5,11 @@ import game1 from './game-1.js';
 import {games, questions} from '../game/data.js';
 import renderOption from '../game/renderOption.js';
 import renderStats from '../game/renderStats.js';
+import header from './header.js';
 
 const moduleHtml = (state) => {
   const html = createTempate(`
+    ${header(state)}
     <div class="game">
       <p class="game__task">${games[state.screen].description}</p>
       <form class="game__content  game__content--triple">
@@ -15,10 +17,9 @@ const moduleHtml = (state) => {
         ${renderOption(questions[`question-${state.currentQuestion}`].optionList[`option-2`])}
         ${renderOption(questions[`question-${state.currentQuestion}`].optionList[`option-3`])}
       </form>
-      ${renderStats(questions)}
+      ${renderStats(state.questionStats)}
     </div>
     `);
-
   const game = html.querySelector(`.game`);
 
   game.addEventListener(`click`, (e) => {

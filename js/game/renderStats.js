@@ -10,7 +10,7 @@ export default (questions) => {
     <div class="stats">
       <ul class="stats">
         ${[...Object.keys(questions)].map((question) => {
-          return `<li class="stats__result ${questStatusMap[questions[question].status]}"></li>`;
+          return `<li class="stats__result ${questStatusMap[questions[question]]}"></li>`;
         })}
       </ul>
     </div>`;
