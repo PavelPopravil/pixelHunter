@@ -1,14 +1,10 @@
 import createTempate from '../utils/createTemplate.js';
+import header from './header.js';
+import backToIntro from '../game/backToIntro.js';
 
-const moduleHtml = createTempate(`
-    <header class="header">
-        <div class="header__back">
-          <span class="back">
-            <img src="img/arrow_left.svg" width="45" height="45" alt="Back">
-            <img src="img/logo_small.png" width="101" height="44">
-          </span>
-        </div>
-    </header>
+const moduleHtml = () => {
+  const html = createTempate(`
+    ${header()}
     <div class="result">
         <h1>Победа!</h1>
         <table class="result__table">
@@ -110,6 +106,9 @@ const moduleHtml = createTempate(`
         </table>
     </div>
     `);
+
+  return backToIntro(html);
+};
 
 export default moduleHtml;
 

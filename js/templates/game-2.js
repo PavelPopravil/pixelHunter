@@ -4,6 +4,7 @@ import game3 from './game-3.js';
 import {games, questions} from '../game/data.js';
 import renderOption from '../game/renderOption.js';
 import renderStats from '../game/renderStats.js';
+import backToIntro from '../game/backToIntro.js';
 import header from './header.js';
 
 const moduleHtml = (state) => {
@@ -35,7 +36,7 @@ const moduleHtml = (state) => {
     'option-1': null
   };
 
-  return html;
+  return backToIntro(html);
 };
 
 export default moduleHtml;

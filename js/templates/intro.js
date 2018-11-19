@@ -12,7 +12,7 @@ const moduleHtml = createTempate(`
 const btn = moduleHtml.querySelector(`.intro__asterisk`);
 
 btn.addEventListener(`click`, () => {
-  renderTemplate(greetings);
+  renderTemplate(greetings());
 });
 
 export default moduleHtml;

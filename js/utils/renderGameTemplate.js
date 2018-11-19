@@ -14,8 +14,8 @@ export default (state, screenTemplate) => {
       questionsLength: questCount,
       currentQuestion: currentQuest,
       questionStats: questStats
-    })));
+    })), state);
   } else {
-    renderTemplate(stats);
+    renderTemplate(stats());
   }
 };

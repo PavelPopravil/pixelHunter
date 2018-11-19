@@ -4,9 +4,9 @@ import game2 from './game-2.js';
 import {games, questions} from '../game/data.js';
 import renderOption from '../game/renderOption.js';
 import renderStats from '../game/renderStats.js';
+import backToIntro from '../game/backToIntro.js';
 import header from './header.js';
 
-// toDo Отрендерить header
 const moduleHtml = (state) => {
   const html = createTempate(`
     ${header(state)}
@@ -38,7 +38,7 @@ const moduleHtml = (state) => {
     'option-2': null
   };
 
-  return html;
+  return backToIntro(html);
 };
 
 export default moduleHtml;

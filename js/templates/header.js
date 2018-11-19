@@ -1,18 +1,18 @@
-const headerTemplate = (state) => {
-  const html = `<header class="header">
-        <div class="header__back">
-          <span class="back">
-            <img src="img/arrow_left.svg" width="45" height="45" alt="Back">
-            <img src="img/logo_small.png" width="101" height="44">
-          </span>
-        </div>
-        <h1 class="game__timer">${state.timeOut}</h1>
-        <div class="game__lives">
-            ${new Array(state.maxLifes - state.lifes).fill(`<img src="img/heart__empty.svg" class="game__heart" alt="Life" width="32" height="32">`).join(``)}
-            ${new Array(state.lifes).fill(`<img src="img/heart__full.svg" class="game__heart" alt="Life" width="32" height="32">`).join(``)}
-        </div>
+const headerTemplate = (state = false) => {
+
+  return `<header class="header">
+    <div class="header__back">
+    <span class="back">
+    <img src="img/arrow_left.svg" width="45" height="45" alt="Back">
+    <img src="img/logo_small.png"  width="101" height="44">
+    </span>
+    </div>
+    ${state ? `<h1 class="game__timer">${state.timeOut}</h1>
+    <div class="game__lives">
+    ${new Array(state.maxLifes - state.lifes).fill(`<img src="img/heart__empty.svg" class="game__heart" alt="Life" width="32" height="32">`).join(``)}
+    ${new Array(state.lifes).fill(`<img src="img/heart__full.svg" class="game__heart" alt="Life" width="32" height="32">`).join(``)}
+    </div>` : ``}
     </header>`;
-  return html;
 };
 
 export default headerTemplate;

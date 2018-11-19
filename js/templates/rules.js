@@ -1,17 +1,13 @@
 import createTempate from '../utils/createTemplate.js';
 import renderTemplate from '../utils/renderTemplate.js';
 import {initialState} from '../game/data.js';
+import backToIntro from '../game/backToIntro.js';
 import game1 from './game-1.js';
+import header from './header.js';
 
-const moduleHtml = createTempate(`
-    <header class="header">
-        <div class="header__back">
-          <span class="back">
-            <img src="img/arrow_left.svg" width="45" height="45" alt="Back">
-            <img src="img/logo_small.png" width="101" height="44">
-          </span>
-        </div>
-    </header>
+const moduleHtml = () => {
+  const html = createTempate(`
+    ${header()}
     <div class="rules">
         <h1 class="rules__title">Правила</h1>
         <p class="rules__description">Угадай 10 раз для каждого изображения фото <img
@@ -30,20 +26,23 @@ const moduleHtml = createTempate(`
     </div>
     `);
 
-const form = moduleHtml.querySelector(`.rules__form`);
-const inpName = form.querySelector(`.rules__input`);
-const submitBtn = form.querySelector(`.rules__button`);
+  const form = html.querySelector(`.rules__form`);
+  const inpName = form.querySelector(`.rules__input`);
+  const submitBtn = form.querySelector(`.rules__button`);
 
-inpName.addEventListener(`input`, (e) => {
-  if (e.target.value.length > 0) {
-    submitBtn.removeAttribute(`disabled`);
-  }
-});
+  inpName.addEventListener(`input`, (e) => {
+    if (e.target.value.length > 0) {
+      submitBtn.removeAttribute(`disabled`);
+    }
+  });
 
-form.addEventListener(`submit`, (e) => {
-  e.preventDefault();
-  renderTemplate(game1(initialState));
-});
+  form.addEventListener(`submit`, (e) => {
+    e.preventDefault();
+    renderTemplate(game1(initialState));
+  });
+
+  return backToIntro(html);
+};
 
 export default moduleHtml;
 
