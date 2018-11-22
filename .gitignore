@@ -8,3 +8,8 @@
 build/
 node_modules/
 Thumbs.db
+
+.htaccess*
+*.log
+*_log
+*.txt

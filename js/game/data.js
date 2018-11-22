@@ -26,6 +26,7 @@ export const pictures = {
   ]
 };
 
+//toDo Перевести объект вопросов в массив
 export const questions = Object.freeze({
   'question-1': {
     status: `unknown`,
@@ -80,6 +81,7 @@ export const questions = Object.freeze({
   }
 });
 
+//toDo брать статус вопроса по questions[currentQuestion].status
 export const initialState = Object.freeze({
   timeOut: 30,
   lifes: 3,
