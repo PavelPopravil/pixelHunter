@@ -9,8 +9,8 @@ export default (questions) => {
   return `
     <div class="stats">
       <ul class="stats">
-        ${[...Object.keys(questions)].map((question) => {
-          return `<li class="stats__result ${questStatusMap[questions[question]]}"></li>`;
+        ${questions.map((question) => {
+          return `<li class="stats__result ${questStatusMap[question]}"></li>`;
         })}
       </ul>
     </div>`;

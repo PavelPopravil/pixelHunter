@@ -26,9 +26,8 @@ export const pictures = {
   ]
 };
 
-//toDo Перевести объект вопросов в массив
-export const questions = Object.freeze({
-  'question-1': {
+export const questions = [
+  {
     status: `unknown`,
     optionList: {
       'option-1': {
@@ -45,7 +44,7 @@ export const questions = Object.freeze({
       }
     }
   },
-  'question-2': {
+  {
     status: `unknown`,
     optionList: {
       'option-1': {
@@ -56,7 +55,7 @@ export const questions = Object.freeze({
       }
     }
   },
-  'question-3': {
+  {
     status: `unknown`,
     optionList: {
       'option-1': {
@@ -79,22 +78,17 @@ export const questions = Object.freeze({
       }
     }
   }
-});
+];
 
-//toDo брать статус вопроса по questions[currentQuestion].status
 export const initialState = Object.freeze({
   timeOut: 30,
   lifes: 3,
   maxLifes: 3,
   screen: `game-1`,
-  questionsLength: Object.keys(questions).length,
-  currentQuestion: 1,
-  questionStats: {}
+  questionsLength: questions.length,
+  currentQuestionIndex: 0,
+  questionsStats: questions.map((question) => question.status)
 });
-
-for (let question in questions) {
-  initialState.questionStats[question] = questions[question].status;
-}
 
 export const questStatusMap = {
   wrong: `stats__result--wrong`,

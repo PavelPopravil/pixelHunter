@@ -13,10 +13,10 @@ const moduleHtml = (state) => {
     <div class="game">
         <p class="game__task">${games[state.screen].description}</p>
         <form class="game__content">
-          ${renderOption(questions[`question-${state.currentQuestion}`].optionList[`option-1`], `option-1`)}
-          ${renderOption(questions[`question-${state.currentQuestion}`].optionList[`option-2`], `option-2`)}
+          ${renderOption(questions[state.currentQuestionIndex].optionList[`option-1`], `option-1`)}
+           ${renderOption(questions[state.currentQuestionIndex].optionList[`option-2`], `option-2`)}
         </form>
-        ${renderStats(state.questionStats)}
+        ${renderStats(state.questionsStats)}
     </div>
     `);
   const game = html.querySelector(`.game`);
