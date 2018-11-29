@@ -1,5 +1,6 @@
 import createTempate from '../utils/createTemplate.js';
 import renderGameTemplate from '../utils/renderGameTemplate.js';
+import delegateElement from '../utils/delegateElement.js';
 import game2 from './game-2.js';
 import {games, questions} from '../game/data.js';
 import renderOption from '../game/renderOption.js';
@@ -19,19 +20,41 @@ const moduleHtml = (state) => {
         ${renderStats(state.questionsStats)}
     </div>
     `);
-  const game = html.querySelector(`.game`);
-  const gameForm = game.querySelector(`.game__content`);
 
-  gameForm.addEventListener(`click`, (e) => {
 
-    if (e.target.tagName === `INPUT`) {
-      const name = e.target.name;
-      gameData[name] = e.target.value;
-      if (gameData[`option-1`] !== null && gameData[`option-2`] !== null) {
-        renderGameTemplate(state, game2);
+  const gameForm = html.querySelector(`.game__content`);
+
+  const gameOptions = html.querySelectorAll(`.game__option`);
+
+  gameOptions.forEach((option) => {
+    const imgType = option.querySelector(`img`).getAttribute(`data-type`);
+    let totalAnswer = null;
+    option.addEventListener(`click`, (e) => {
+      if (e.target.tagName === `INPUT`) {
+        totalAnswer = e.target.value;
+        if (totalAnswer === imgType) {
+          console.log(`correctAnswer`);
+        } else {
+          console.log(`incorrectAnswer`);
+        }
       }
-    }
+    });
   });
+
+  // gameForm.addEventListener(`click`, (e) => {
+  //
+  //   if (delegateElement(e.target, e.currentTarget, `game__option`)) {
+  //
+  //   }
+  //
+  //   if (e.target.tagName === `INPUT`) {
+  //     const name = e.target.name;
+  //     gameData[name] = e.target.value;
+  //     if (gameData[`option-1`] !== null && gameData[`option-2`] !== null) {
+  //       renderGameTemplate(state, game2);
+  //     }
+  //   }
+  // });
 
   const gameData = {
     'option-1': null,

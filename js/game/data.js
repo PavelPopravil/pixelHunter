@@ -7,7 +7,7 @@ const pointsMap = {
 
 export const handleCorrectAnswer = (currentTime) => {
   if (typeof currentTime !== `number`) {
-    throw new Error(`Parament should be a number`);
+    throw new Error(`Parameter should be a number`);
   }
   switch (true) {
     case (currentTime < 10):
@@ -52,13 +52,13 @@ export const questions = [
     status: `unknown`,
     optionList: {
       'option-1': {
-        isPhoto: true,
+        type: `photo`,
         url: pictures.photos[0],
         width: 468,
         height: 458
       },
       'option-2': {
-        isPic: false,
+        type: `paint`,
         url: pictures.paintings[0],
         width: 468,
         height: 458
@@ -69,7 +69,7 @@ export const questions = [
     status: `unknown`,
     optionList: {
       'option-1': {
-        isPhoto: true,
+        type: `photo`,
         url: pictures.photos[0],
         width: 705,
         height: 455
@@ -80,19 +80,19 @@ export const questions = [
     status: `unknown`,
     optionList: {
       'option-1': {
-        isPhoto: true,
+        type: `photo`,
         url: pictures.photos[1],
         width: 304,
         height: 455
       },
       'option-2': {
-        isPhoto: false,
+        type: `paint`,
         url: pictures.paintings[1],
         width: 304,
         height: 455
       },
       'option-3': {
-        isPhoto: true,
+        type: `photo`,
         url: pictures.photos[2],
         width: 304,
         height: 455

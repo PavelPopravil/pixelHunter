@@ -10,7 +10,7 @@
 export default (optionData, name) => {
   return `
     <div class="game__option">
-      <img src='${optionData.url}' alt='${optionData.alt}' width='${optionData.width}' height='${optionData.height}'>
+      <img src='${optionData.url}' data-type='${optionData.type}' alt='${optionData.alt}' width='${optionData.width}' height='${optionData.height}'>
       ${name ? ` <label class="game__answer game__answer--photo">
         <input name="${name}" type="radio" value="photo">
         <span>Фото</span>
