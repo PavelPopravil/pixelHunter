@@ -1,3 +1,24 @@
+const answerTime = 30;
+const pointsMap = {
+  correct: 100,
+  fast: 150,
+  slow: 50
+};
+
+export const handleCorrectAnswer = (currentTime) => {
+  if (typeof currentTime !== `number`) {
+    throw new Error(`Parament should be a number`);
+  }
+  switch (true) {
+    case (currentTime < 10):
+      return `fast`;
+    case (currentTime > 20):
+      return `slow`;
+    default:
+      return `correct`;
+  }
+};
+
 export const games = Object.freeze({
   'game-1': {
     description: `Угадайте для каждого изображения фото или рисунок?`,
