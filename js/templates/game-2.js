@@ -4,6 +4,7 @@ import game3 from './game-3.js';
 import {games, questions} from '../game/data.js';
 import renderOption from '../game/renderOption.js';
 import renderStats from '../game/renderStats.js';
+import answerHandler from '../game/answerHandler.js';
 import backToIntro from '../game/backToIntro.js';
 import header from './header.js';
 
@@ -19,23 +20,22 @@ const moduleHtml = (state) => {
         ${renderStats(state.questionsStats)}
     </div>
     `);
-  const game = html.querySelector(`.game`);
-  const gameForm = game.querySelector(`.game__content`);
 
-  gameForm.addEventListener(`click`, (e) => {
+  const gameOptions = html.querySelectorAll(`.game__option`);
 
-    if (e.target.tagName === `INPUT`) {
-      const name = e.target.name;
-      gameData[name] = e.target.value;
-      if (gameData[`option-1`] !== null) {
-        renderGameTemplate(state, game3);
-      }
-    }
+  const gameData = Object.freeze({
+    'option-1': null
   });
 
-  const gameData = {
-    'option-1': null
+  const optionHandler = (data) => {
+    if (data[`option-1`]) {
+      renderGameTemplate(state, game3);
+    } else if (data[`option-1`] === false) {
+      renderGameTemplate(state, game3);
+    }
   };
+
+  answerHandler(gameOptions, gameData, optionHandler);
 
   return backToIntro(html);
 };

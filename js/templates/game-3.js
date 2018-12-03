@@ -11,7 +11,7 @@ import header from './header.js';
 const moduleHtml = (state) => {
   const html = createTempate(`
     ${header(state)}
-    <div class="game">
+    <div class="game" data-answer="${games[state.screen].type}">
       <p class="game__task">${games[state.screen].description}</p>
       <form class="game__content  game__content--triple">
         ${renderOption(questions[state.currentQuestionIndex].optionList[`option-1`])}
@@ -21,11 +21,18 @@ const moduleHtml = (state) => {
       ${renderStats(state.questionsStats)}
     </div>
     `);
+
   const game = html.querySelector(`.game`);
 
-  game.addEventListener(`click`, (e) => {
+  const gameData = Object.freeze({
+    'answer': games[state.screen].type
+  });
 
-    if (delegateElement(e.target, e.currentTarget, `game__option`)) {
+  game.addEventListener(`click`, (e) => {
+    const gameAnswer = delegateElement(e.target, e.currentTarget, `game__option`).querySelector(`img`).getAttribute(`data-type`);
+    if (gameAnswer.toLowerCase() === gameData.answer) {
+      renderGameTemplate(state, game1);
+    } else {
       renderGameTemplate(state, game1);
     }
   });

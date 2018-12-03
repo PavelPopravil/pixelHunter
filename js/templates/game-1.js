@@ -5,6 +5,7 @@ import game2 from './game-2.js';
 import {games, questions} from '../game/data.js';
 import renderOption from '../game/renderOption.js';
 import renderStats from '../game/renderStats.js';
+import answerHandler from '../game/answerHandler.js';
 import backToIntro from '../game/backToIntro.js';
 import header from './header.js';
 
@@ -21,45 +22,22 @@ const moduleHtml = (state) => {
     </div>
     `);
 
-
-  const gameForm = html.querySelector(`.game__content`);
-
   const gameOptions = html.querySelectorAll(`.game__option`);
 
-  gameOptions.forEach((option) => {
-    const imgType = option.querySelector(`img`).getAttribute(`data-type`);
-    let totalAnswer = null;
-    option.addEventListener(`click`, (e) => {
-      if (e.target.tagName === `INPUT`) {
-        totalAnswer = e.target.value;
-        if (totalAnswer === imgType) {
-          console.log(`correctAnswer`);
-        } else {
-          console.log(`incorrectAnswer`);
-        }
-      }
-    });
-  });
-
-  // gameForm.addEventListener(`click`, (e) => {
-  //
-  //   if (delegateElement(e.target, e.currentTarget, `game__option`)) {
-  //
-  //   }
-  //
-  //   if (e.target.tagName === `INPUT`) {
-  //     const name = e.target.name;
-  //     gameData[name] = e.target.value;
-  //     if (gameData[`option-1`] !== null && gameData[`option-2`] !== null) {
-  //       renderGameTemplate(state, game2);
-  //     }
-  //   }
-  // });
-
-  const gameData = {
+  const gameData = Object.freeze({
     'option-1': null,
     'option-2': null
+  });
+
+  const optionHandler = (data) => {
+    if (data[`option-1`] && data[`option-2`]) {
+      renderGameTemplate(state, game2);
+    } else if (data[`option-1`] === false || data[`option-2`] === false) {
+      renderGameTemplate(state, game2);
+    }
   };
+
+  answerHandler(gameOptions, gameData, optionHandler);
 
   return backToIntro(html);
 };

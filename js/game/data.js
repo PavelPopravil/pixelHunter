@@ -19,6 +19,13 @@ export const handleCorrectAnswer = (currentTime) => {
   }
 };
 
+const type3Game = {
+  'photo': `Найдите фотографию среди изображений`,
+  'paint': `Найдите рисунок среди изображений`
+};
+
+const type3 = `paint`;
+
 export const games = Object.freeze({
   'game-1': {
     description: `Угадайте для каждого изображения фото или рисунок?`,
@@ -29,7 +36,8 @@ export const games = Object.freeze({
     nextScreen: `game-3`
   },
   'game-3': {
-    description: `Найдите рисунок среди изображений`,
+    description: type3Game[type3],
+    type: type3,
     nextScreen: `game-1`
   }
 });
