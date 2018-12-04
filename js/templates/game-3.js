@@ -3,9 +3,11 @@ import renderGameTemplate from '../utils/renderGameTemplate.js';
 import delegateElement from '../utils/delegateElement.js';
 import game1 from './game-1.js';
 import {games, questions} from '../game/data.js';
+import Timer from '../game/timer.js';
 import renderOption from '../game/renderOption.js';
 import renderStats from '../game/renderStats.js';
 import backToIntro from '../game/backToIntro.js';
+import {handleCorrectAnswer} from '../game/game.js';
 import header from './header.js';
 
 const moduleHtml = (state) => {
@@ -22,16 +24,34 @@ const moduleHtml = (state) => {
     </div>
     `);
 
+  const headerTimer = html.querySelector(`.game__timer`);
   const game = html.querySelector(`.game`);
 
   const gameData = Object.freeze({
     'answer': games[state.screen].type
   });
 
+  const updateHeaderTime = (time) => {
+    headerTimer.innerHTML = time;
+  };
+
+  const gameTimer = new Timer(state.timeOut);
+
+  gameTimer.onCountComplete = () => {
+    renderGameTemplate(state, game1, `wrong`);
+  };
+
+  gameTimer.onCount = () => {
+    updateHeaderTime(gameTimer.returnDifference());
+  };
+
+  gameTimer.start();
+
+  // const timer
   game.addEventListener(`click`, (e) => {
     const gameAnswer = delegateElement(e.target, e.currentTarget, `game__option`).querySelector(`img`).getAttribute(`data-type`);
     if (gameAnswer.toLowerCase() === gameData.answer) {
-      renderGameTemplate(state, game1, `correct`);
+      renderGameTemplate(state, game1, handleCorrectAnswer(gameTimer.returnValue()));
     } else {
       renderGameTemplate(state, game1, `wrong`);
     }

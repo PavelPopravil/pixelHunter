@@ -2,10 +2,12 @@ import createTempate from '../utils/createTemplate.js';
 import renderGameTemplate from '../utils/renderGameTemplate.js';
 import game3 from './game-3.js';
 import {games, questions} from '../game/data.js';
+import Timer from '../game/timer.js';
 import renderOption from '../game/renderOption.js';
 import renderStats from '../game/renderStats.js';
 import answerHandler from '../game/answerHandler.js';
 import backToIntro from '../game/backToIntro.js';
+import {handleCorrectAnswer} from '../game/game.js';
 import header from './header.js';
 
 const moduleHtml = (state) => {
@@ -21,15 +23,32 @@ const moduleHtml = (state) => {
     </div>
     `);
 
+  const headerTimer = html.querySelector(`.game__timer`);
   const gameOptions = html.querySelectorAll(`.game__option`);
 
   const gameData = Object.freeze({
     'option-1': null
   });
 
+  const updateHeaderTime = (time) => {
+    headerTimer.innerHTML = time;
+  };
+
+  const gameTimer = new Timer(state.timeOut);
+
+  gameTimer.onCountComplete = () => {
+    renderGameTemplate(state, game3, `wrong`);
+  };
+
+  gameTimer.onCount = () => {
+    updateHeaderTime(gameTimer.returnDifference());
+  };
+
+  gameTimer.start();
+
   const optionHandler = (data) => {
     if (data[`option-1`]) {
-      renderGameTemplate(state, game3, `correct`);
+      renderGameTemplate(state, game3, handleCorrectAnswer(gameTimer.returnValue()));
     } else if (data[`option-1`] === false) {
       renderGameTemplate(state, game3, `wrong`);
     }
