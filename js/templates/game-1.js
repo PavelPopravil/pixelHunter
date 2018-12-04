@@ -1,8 +1,8 @@
 import createTempate from '../utils/createTemplate.js';
 import renderGameTemplate from '../utils/renderGameTemplate.js';
-import delegateElement from '../utils/delegateElement.js';
 import game2 from './game-2.js';
 import {games, questions} from '../game/data.js';
+// import {timer} from '../game/game.js';
 import renderOption from '../game/renderOption.js';
 import renderStats from '../game/renderStats.js';
 import answerHandler from '../game/answerHandler.js';
@@ -16,7 +16,7 @@ const moduleHtml = (state) => {
         <p class="game__task">${games[state.screen].description}</p>
         <form class="game__content">
           ${renderOption(questions[state.currentQuestionIndex].optionList[`option-1`], `option-1`)}
-           ${renderOption(questions[state.currentQuestionIndex].optionList[`option-2`], `option-2`)}
+          ${renderOption(questions[state.currentQuestionIndex].optionList[`option-2`], `option-2`)}
         </form>
         ${renderStats(state.questionsStats)}
     </div>
@@ -29,11 +29,12 @@ const moduleHtml = (state) => {
     'option-2': null
   });
 
+
   const optionHandler = (data) => {
     if (data[`option-1`] && data[`option-2`]) {
-      renderGameTemplate(state, game2);
+      renderGameTemplate(state, game2, `correct`);
     } else if (data[`option-1`] === false || data[`option-2`] === false) {
-      renderGameTemplate(state, game2);
+      renderGameTemplate(state, game2, `wrong`);
     }
   };
 

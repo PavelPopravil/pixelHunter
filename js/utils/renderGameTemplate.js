@@ -2,9 +2,9 @@ import {games} from '../game/data.js';
 import renderTemplate from './renderTemplate.js';
 import stats from '../templates/stats.js';
 
-export default (state, screenTemplate) => {
+export default (state, screenTemplate, questState) => {
   const questStats = state.questionsStats.slice();
-  questStats[state.currentQuestionIndex] = `correct`;
+  questStats[state.currentQuestionIndex] = questState;
   const questCount = state.questionsLength - 1;
   const currentQuest = state.currentQuestionIndex + 1;
   if (questCount > 0) {

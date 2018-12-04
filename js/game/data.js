@@ -116,7 +116,8 @@ export const initialState = Object.freeze({
   screen: `game-1`,
   questionsLength: questions.length,
   currentQuestionIndex: 0,
-  questionsStats: questions.map((question) => question.status)
+  questionsStats: questions.map((question) => question.status),
+  points: 0
 });
 
 export const questStatusMap = {

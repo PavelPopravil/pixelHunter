@@ -29,9 +29,9 @@ const moduleHtml = (state) => {
 
   const optionHandler = (data) => {
     if (data[`option-1`]) {
-      renderGameTemplate(state, game3);
+      renderGameTemplate(state, game3, `correct`);
     } else if (data[`option-1`] === false) {
-      renderGameTemplate(state, game3);
+      renderGameTemplate(state, game3, `wrong`);
     }
   };
 

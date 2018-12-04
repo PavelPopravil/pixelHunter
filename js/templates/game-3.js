@@ -31,9 +31,9 @@ const moduleHtml = (state) => {
   game.addEventListener(`click`, (e) => {
     const gameAnswer = delegateElement(e.target, e.currentTarget, `game__option`).querySelector(`img`).getAttribute(`data-type`);
     if (gameAnswer.toLowerCase() === gameData.answer) {
-      renderGameTemplate(state, game1);
+      renderGameTemplate(state, game1, `correct`);
     } else {
-      renderGameTemplate(state, game1);
+      renderGameTemplate(state, game1, `wrong`);
     }
   });
 
