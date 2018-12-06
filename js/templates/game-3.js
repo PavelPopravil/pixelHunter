@@ -51,8 +51,10 @@ const moduleHtml = (state) => {
   game.addEventListener(`click`, (e) => {
     const gameAnswer = utils.delegateElement(e.target, e.currentTarget, `game__option`).querySelector(`img`).getAttribute(`data-type`);
     if (gameAnswer.toLowerCase() === gameData.answer) {
+      gameTimer.stop();
       renderGameTemplate(state, game1, handleCorrectAnswer(gameTimer.returnValue()));
     } else {
+      gameTimer.stop();
       renderGameTemplate(state, game1, `wrong`);
     }
   });

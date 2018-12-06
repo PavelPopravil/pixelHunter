@@ -50,8 +50,10 @@ const moduleHtml = (state) => {
   const optionHandler = (data) => {
     if (data[`option-1`] && data[`option-2`]) {
       renderGameTemplate(state, game2, handleCorrectAnswer(gameTimer.returnValue()));
+      gameTimer.stop();
     } else if (data[`option-1`] === false || data[`option-2`] === false) {
       renderGameTemplate(state, game2);
+      gameTimer.stop();
     }
   };
 

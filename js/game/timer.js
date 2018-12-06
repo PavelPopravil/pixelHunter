@@ -15,10 +15,9 @@ export default class {
 
     if (this.count === this.duration && typeof this.onCountComplete === `function`) {
       this.onCountComplete();
-
     }
+
     if (this.count === this.duration) {
-      this.count = 0;
       this.stop();
     }
   }
@@ -28,6 +27,7 @@ export default class {
   }
 
   stop() {
+    this.count = 0;
     clearInterval(this.interval);
   }
 

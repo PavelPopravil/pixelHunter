@@ -1,6 +1,9 @@
 export const handleCorrectAnswer = (currentTime) => {
   if (typeof currentTime !== `number`) {
-    throw new Error(`Parameter should be a number`);
+    throw new RangeError(`Parameter should be a number`);
+  }
+  if (currentTime < 0) {
+    throw new RangeError(`Can't be negative number`);
   }
   switch (true) {
     case (currentTime < 10):
@@ -10,8 +13,4 @@ export const handleCorrectAnswer = (currentTime) => {
     default:
       return `correct`;
   }
-};
-
-export const pointsCounter = () => {
-    console.log(`mew`);
 };

@@ -1,8 +1,8 @@
-const answerTime = 30;
-const pointsMap = {
-  correct: 100,
-  fast: 150,
-  slow: 50
+export const pointsMap = {
+  'correct': 100,
+  'fast': 150,
+  'slow': 50,
+  'wrong': 0
 };
 
 const type3Game = {
