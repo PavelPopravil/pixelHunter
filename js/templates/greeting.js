@@ -1,9 +1,8 @@
-import createTempate from '../utils/createTemplate.js';
-import renderTemplate from '../utils/renderTemplate.js';
+import * as utils from '../utils/utils.js';
 import rules from './rules.js';
 
 const moduleHtml = () => {
-  const html = createTempate(`
+  const html = utils.createTempate(`
     <div class="greeting central--blur">
         <div class="greeting__logo"><img src="img/logo_big.png" width="201" height="89" alt="Pixel Hunter"></div>
         <h1 class="greeting__asterisk">*</h1>
@@ -20,7 +19,7 @@ const moduleHtml = () => {
     `);
 
   html.querySelector(`.greeting__continue`).addEventListener(`click`, () => {
-    renderTemplate(rules());
+      utils.renderTemplate(rules());
   });
   return html;
 };

@@ -1,4 +1,4 @@
-import renderTemplate from './utils/renderTemplate.js';
+import * as utils from './utils/utils.js';
 // import introBlock from './templates/intro.js';
 import rulesBlock from './templates/rules.js';
 // import game1Block from './templates/game-1.js';
@@ -8,5 +8,5 @@ import rulesBlock from './templates/rules.js';
 
 
 document.addEventListener(`DOMContentLoaded`, function () {
-  renderTemplate(rulesBlock());
+  utils.renderTemplate(rulesBlock());
 });

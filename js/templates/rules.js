@@ -1,12 +1,11 @@
-import createTempate from '../utils/createTemplate.js';
-import renderTemplate from '../utils/renderTemplate.js';
+import * as utils from '../utils/utils.js';
 import {initialState} from '../game/data.js';
 import backToIntro from '../game/backToIntro.js';
 import game1 from './game-1.js';
 import header from './header.js';
 
 const moduleHtml = () => {
-  const html = createTempate(`
+  const html = utils.createTempate(`
     ${header()}
     <div class="rules">
         <h1 class="rules__title">Правила</h1>
@@ -38,7 +37,7 @@ const moduleHtml = () => {
 
   form.addEventListener(`submit`, (e) => {
     e.preventDefault();
-    renderTemplate(game1(initialState));
+      utils.renderTemplate(game1(initialState));
   });
 
   return backToIntro(html);

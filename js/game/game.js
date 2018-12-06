@@ -11,3 +11,7 @@ export const handleCorrectAnswer = (currentTime) => {
       return `correct`;
   }
 };
+
+export const pointsCounter = () => {
+    console.log(`mew`);
+};

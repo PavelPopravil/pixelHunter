@@ -1,5 +1,6 @@
-import createTempate from '../utils/createTemplate.js';
-import renderGameTemplate from '../utils/renderGameTemplate.js';
+import * as utils from '../utils/utils.js';
+import header from './header.js';
+import renderGameTemplate from '../game/renderGameTemplate.js';
 import game3 from './game-3.js';
 import {games, questions} from '../game/data.js';
 import Timer from '../game/timer.js';
@@ -8,10 +9,10 @@ import renderStats from '../game/renderStats.js';
 import answerHandler from '../game/answerHandler.js';
 import backToIntro from '../game/backToIntro.js';
 import {handleCorrectAnswer} from '../game/game.js';
-import header from './header.js';
+
 
 const moduleHtml = (state) => {
-  const html = createTempate(`
+  const html = utils.createTempate(`
     ${header(state)}
     <div class="game">
         <p class="game__task">${games[state.screen].description}</p>

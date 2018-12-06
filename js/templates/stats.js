@@ -1,9 +1,9 @@
-import createTempate from '../utils/createTemplate.js';
+import * as utils from '../utils/utils.js';
 import header from './header.js';
 import backToIntro from '../game/backToIntro.js';
 
 const moduleHtml = () => {
-  const html = createTempate(`
+  const html = utils.createTempate(`
     ${header()}
     <div class="result">
         <h1>Победа!</h1>
