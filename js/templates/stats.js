@@ -3,7 +3,7 @@ import header from './header.js';
 import backToIntro from '../game/backToIntro.js';
 
 const moduleHtml = () => {
-  const html = utils.createTempate(`
+  const html = utils.createTemplate(`
     ${header()}
     <div class="result">
         <h1>Победа!</h1>

@@ -5,7 +5,7 @@ import game1 from './game-1.js';
 import header from './header.js';
 
 const moduleHtml = () => {
-  const html = utils.createTempate(`
+  const html = utils.createTemplate(`
     ${header()}
     <div class="rules">
         <h1 class="rules__title">Правила</h1>

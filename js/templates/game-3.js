@@ -11,7 +11,7 @@ import {handleCorrectAnswer} from '../game/game.js';
 
 
 const moduleHtml = (state) => {
-  const html = utils.createTempate(`
+  const html = utils.createTemplate(`
     ${header(state)}
     <div class="game" data-answer="${games[state.screen].type}">
       <p class="game__task">${games[state.screen].description}</p>
